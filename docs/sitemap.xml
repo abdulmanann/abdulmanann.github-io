@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	
-	<sitemap>
-	   	<loc>http://example.com/es/sitemap.xml</loc>
-		
-	   	<lastmod>2017-11-13T11:58:39-05:00</lastmod>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>http://example.com/de/sitemap.xml</loc>
-		
-	   	<lastmod>2017-11-13T11:58:39-05:00</lastmod>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>http://example.com/en/sitemap.xml</loc>
-		
-	   	<lastmod>2020-07-25T02:04:06-05:00</lastmod>
-		
-	</sitemap>
-	
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://abdulmanann.github.io/project/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/tags/code/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/series/quickstart/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/series/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/tags/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/project/operation-system/</loc>
+    <lastmod>2020-07-25T02:04:06-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/project/long-form-post/</loc>
+    <lastmod>2019-05-30T20:18:53-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/tags/blog/</loc>
+    <lastmod>2019-05-30T20:18:53-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/resume/</loc>
+    <lastmod>2017-11-13T11:58:39-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/tags/ipsum/</loc>
+    <lastmod>2017-11-13T11:58:39-05:00</lastmod>
+  </url><url>
+    <loc>https://abdulmanann.github.io/tags/words/</loc>
+    <lastmod>2017-11-13T11:58:39-05:00</lastmod>
+  </url>
+</urlset>
