@@ -1,5 +1,6 @@
 baseURL                          = "https://abdulmanann.github.io/"   # Your domain name. Must end with "/"
 theme                            = "introduction"
+title                            = "Abdul Manan"
 publishdir                       = "docs"
 DefaultContentLanguage           = "en"                    # Default language for multilingual sites
 # disqusshortname                 = ""                     # https://gohugo.io/content-management/comments
