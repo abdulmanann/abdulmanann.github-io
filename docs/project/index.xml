@@ -13,7 +13,9 @@
       <pubDate>Sat, 25 Jul 2020 02:04:06 -0500</pubDate>
       
       <guid>https://abdulmanann.github.io/project/operation-system/</guid>
-      <description>Aromatic aroma con panna, crema so coffee robust coffee barista, café au lait trifecta that strong blue mountain cortado aftertaste. Aroma extraction french press, skinny sweet, blue mountain cup roast barista, beans, extra cappuccino mug crema strong. Americano caffeine white, con panna saucer sit, con panna eu, carajillo aftertaste kopi-luwak, body aftertaste cup single origin café au lait saucer. Macchiato java sweet arabica, turkish cup, eu flavour mug extraction white cortado saucer est white brewed instant, rich, barista breve cappuccino barista organic.</description>
+      <description>Here are some helpful tips for setting up this theme.
+ConfigurationMost of what you&amp;rsquo;ll want to configure is demonstrated in the exampleSite config.toml. This is Hugo&amp;rsquo;s configuration file. You can copy the config.toml in the exampleSite/ to your site root get started.
+Here are all the options included in the configuration file for this example site!baseURL = &amp;#34;https://abdulmanann.github.io/&amp;#34; # Your domain name. Must end with &amp;#34;/&amp;#34; theme = &amp;#34;introduction&amp;#34; title = &amp;#34;Abdul Manan&amp;#34; publishdir = &amp;#34;docs&amp;#34; DefaultContentLanguage = &amp;#34;en&amp;#34; # Default language for multilingual sites # disqusshortname = &amp;#34;&amp;#34; # https://gohugo.</description>
     </item>
     
     <item>

@@ -107,7 +107,121 @@ Writing My Own 64 Bit Operating System - Introduction
 
                 
     <div class="container markdown top-pad">
-        <p>Aromatic aroma con panna, crema so coffee robust coffee barista, café au lait trifecta that strong blue mountain cortado aftertaste. Aroma extraction french press, skinny sweet, blue mountain cup roast barista, beans, extra cappuccino mug crema strong. Americano caffeine white, con panna saucer sit, con panna eu, carajillo aftertaste kopi-luwak, body aftertaste cup single origin café au lait saucer. Macchiato java sweet arabica, turkish cup, eu flavour mug extraction white cortado saucer est white brewed instant, rich, barista breve cappuccino barista organic. Barista, beans extraction, barista mocha, roast steamed siphon cup sweet cortado, cinnamon froth milk ristretto cortado galão. Crema, milk extra brewed, lungo dripper, espresso flavour qui, variety, grinder caramelization sit, strong turkish espresso body, filter barista caramelization half and half strong. To go viennese cream to go, flavour, so mocha as, carajillo iced et a siphon froth. Aged, eu, cup, brewed aroma kopi-luwak, coffee, id viennese french press brewed grounds acerbic froth. Decaffeinated acerbic, spoon beans seasonal, french press café au lait mazagran roast chicory, pumpkin spice galão as fair trade, dark irish cup ristretto half and half whipped shop. Latte instant black extra aroma, instant, extra robusta variety skinny shop aged cup ristretto foam cortado. Bar galão skinny saucer est affogato sugar caffeine chicory sugar coffee, seasonal barista french press acerbic in chicory robust.</p>
+        <p>Here are some helpful tips for setting up this theme.</p>
+
+<h2 id="configuration" class="anchor-link"><a href="#configuration">Configuration</a></h2>
+<p>Most of what you&rsquo;ll want to configure is demonstrated in the exampleSite <code>config.toml</code>. This is <a href="https://gohugo.io/getting-started/configuration/">Hugo&rsquo;s configuration file</a>. You can copy the <code>config.toml</code> in the <code>exampleSite/</code> to your site root get started.</p>
+<details><summary>Here are all the options included in the configuration file for this example site!</summary>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">
+baseURL                          = <span style="color:#4070a0">&#34;https://abdulmanann.github.io/&#34;</span>   <span style="color:#60a0b0;font-style:italic"># Your domain name. Must end with &#34;/&#34;</span>
+theme                            = <span style="color:#4070a0">&#34;introduction&#34;</span>
+title                            = <span style="color:#4070a0">&#34;Abdul Manan&#34;</span>
+publishdir                       = <span style="color:#4070a0">&#34;docs&#34;</span>
+DefaultContentLanguage           = <span style="color:#4070a0">&#34;en&#34;</span>                    <span style="color:#60a0b0;font-style:italic"># Default language for multilingual sites</span>
+<span style="color:#60a0b0;font-style:italic"># disqusshortname                 = &#34;&#34;                     # https://gohugo.io/content-management/comments</span>
+<span style="color:#60a0b0;font-style:italic"># googleAnalytics                 = &#34;&#34;                     # https://gohugo.io/templates/internal/#google-analytics</span>
+
+[params]
+    themeStyle                   = <span style="color:#4070a0">&#34;auto&#34;</span>                  <span style="color:#60a0b0;font-style:italic"># Choose &#34;light&#34; or &#34;dark&#34; or &#34;auto&#34;</span>
+    favicon                      = <span style="color:#4070a0">&#34;/img/fav.ico&#34;</span>          <span style="color:#60a0b0;font-style:italic"># Path to favicon file</span>
+    showRSSButton                = <span style="color:#007020;font-weight:bold">false</span>                   <span style="color:#60a0b0;font-style:italic"># Show rss button in navigation</span>
+    fadeIn                       = <span style="color:#007020;font-weight:bold">true</span>                    <span style="color:#60a0b0;font-style:italic"># Turn on/off the fade-in effect</span>
+    fadeInIndex                  = <span style="color:#007020;font-weight:bold">false</span>                   <span style="color:#60a0b0;font-style:italic"># Turn on/off the fade-in effect on the index page even if fade-in was otherwise turned off</span>
+    dateFormat                   = <span style="color:#4070a0">&#34;Jan 2, 2006&#34;</span>
+    email                        = <span style="color:#4070a0">&#34;amanan.bscs19seecs@seecs.edu.pk&#34;</span>   <span style="color:#60a0b0;font-style:italic"># E-mail address for contact section</span>
+    <span style="color:#60a0b0;font-style:italic"># customCSS                  = [&#34;foo.css&#34;]             # Include custom css files placed under assets/</span>
+    <span style="color:#60a0b0;font-style:italic"># customJS                   = [&#34;foo.js&#34;]              # Include custom JavaScript files placed under assets/</span>
+    <span style="color:#60a0b0;font-style:italic"># plausible                  = true                    # Use Plausible analytics (requires an account at Plausible.io)</span>
+
+    <span style="color:#60a0b0;font-style:italic"># Configure the home page</span>
+    [params.home]
+        introHeight              = <span style="color:#4070a0">&#34;fullheight&#34;</span>            <span style="color:#60a0b0;font-style:italic"># Input either &#34;medium&#34; or &#34;large&#34; or &#34;fullheight&#34;</span>
+        showLatest               = <span style="color:#007020;font-weight:bold">true</span>                   <span style="color:#60a0b0;font-style:italic"># Show latest blog post summary</span>
+        showAllPosts             = <span style="color:#007020;font-weight:bold">false</span>                   <span style="color:#60a0b0;font-style:italic"># Set true to list all posts on home page, or set false to link to separate blog list page</span>
+        allPostsArchiveFormat    = <span style="color:#007020;font-weight:bold">true</span>                    <span style="color:#60a0b0;font-style:italic"># show all posts in an archive format</span>
+        localTime                = <span style="color:#007020;font-weight:bold">true</span>                    <span style="color:#60a0b0;font-style:italic"># Show your current local time in contact section</span>
+        timeZone                 = <span style="color:#4070a0">&#34;Asia/Karachi&#34;</span>       <span style="color:#60a0b0;font-style:italic"># Your timezone as in the TZ* column of this list: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
+        timeFormat               = <span style="color:#4070a0">&#34;en-US&#34;</span>                 <span style="color:#60a0b0;font-style:italic"># Language specific format to use</span>
+    
+    <span style="color:#60a0b0;font-style:italic"># Share buttons on blog post pages</span>
+    [params.share]
+        twitter                  = <span style="color:#007020;font-weight:bold">true</span>
+        facebook                 = <span style="color:#007020;font-weight:bold">true</span>
+        pinterest                = <span style="color:#007020;font-weight:bold">true</span>
+
+    <span style="color:#60a0b0;font-style:italic"># Social icons appear in introduction and contact section. Add as many more as you like.</span>
+    <span style="color:#60a0b0;font-style:italic"># Icon pack &#34;fab&#34; includes social network icons, see: https://fontawesome.com/icons?d=gallery&amp;s=brands&amp;m=free</span>
+    <span style="color:#60a0b0;font-style:italic"># Icon pack &#34;fas&#34; includes solid style icons, see: https://fontawesome.com/icons?d=gallery&amp;s=solid&amp;m=free</span>
+    [[params.social]]
+        url   = <span style="color:#4070a0">&#34;https://twitter.com/&#34;</span>
+        icon  = <span style="color:#4070a0">&#34;twitter&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
+        icon_pack = <span style="color:#4070a0">&#34;fab&#34;</span>
+    [[params.social]]
+        url   = <span style="color:#4070a0">&#34;https://facebook.com/&#34;</span>
+        icon  = <span style="color:#4070a0">&#34;facebook-f&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
+        icon_pack = <span style="color:#4070a0">&#34;fab&#34;</span>
+    [[params.social]]
+        url   = <span style="color:#4070a0">&#34;https://linkedin.com/&#34;</span>
+        icon  = <span style="color:#4070a0">&#34;linkedin-in&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
+        icon_pack = <span style="color:#4070a0">&#34;fab&#34;</span>
+    [[params.social]]
+        url = <span style="color:#4070a0">&#34;mailto:youremail@email.com&#34;</span>  <span style="color:#60a0b0;font-style:italic"># For a direct email link, use &#34;mailto:test@example.org&#34;.</span>
+        icon = <span style="color:#4070a0">&#34;paper-plane&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
+        icon_pack = <span style="color:#4070a0">&#34;fas&#34;</span>
+
+
+<span style="color:#60a0b0;font-style:italic"># If you don&#39;t want to use the default menu, you can define one by yourself</span>
+ [[menu.main]]
+     name    = <span style="color:#4070a0">&#34;Home&#34;</span>
+     url     = <span style="color:#4070a0">&#34;/&#34;</span>
+     weight  = <span style="color:#40a070">100</span>
+ [[menu.main]]
+     name    = <span style="color:#4070a0">&#34;Projects&#34;</span>
+     url     = <span style="color:#4070a0">&#34;/project/&#34;</span>
+     weight  = <span style="color:#40a070">200</span>
+[[menu.main]]
+     name    = <span style="color:#4070a0">&#34;Resume&#34;</span>
+     url     = <span style="color:#4070a0">&#34;/resume/&#34;</span>
+     weight  = <span style="color:#40a070">300</span>
+
+<span style="color:#60a0b0;font-style:italic"># We only use tag as a taxonomies</span>
+<span style="color:#60a0b0;font-style:italic"># You can add more by yourself</span>
+[taxonomies]
+  tag = <span style="color:#4070a0">&#34;tags&#34;</span>
+  series = <span style="color:#4070a0">&#34;series&#34;</span>
+
+[markup]
+  defaultMarkdownHandler = <span style="color:#4070a0">&#34;goldmark&#34;</span>
+  [markup.goldmark]
+  [markup.goldmark.renderer]
+    unsafe = <span style="color:#007020;font-weight:bold">true</span>
+  [markup.highlight]
+    codeFences = <span style="color:#007020;font-weight:bold">true</span>
+    guessSyntax = <span style="color:#007020;font-weight:bold">false</span>
+    hl_Lines = <span style="color:#4070a0">&#34;&#34;</span>
+    lineNoStart = <span style="color:#40a070">1</span>
+    lineNos = <span style="color:#007020;font-weight:bold">false</span>
+    lineNumbersInTable = <span style="color:#007020;font-weight:bold">true</span>
+    noClasses = <span style="color:#007020;font-weight:bold">true</span>
+    <span style="color:#60a0b0;font-style:italic"># For styles, see https://xyproto.github.io/splash/docs/longer/all.html</span>
+    style = <span style="color:#4070a0">&#34;friendly&#34;</span>
+    tabWidth = <span style="color:#40a070">4</span>
+
+[languages]
+    [languages.en]
+        languageName     = <span style="color:#4070a0">&#34;English&#34;</span>
+        languageCode     = <span style="color:#4070a0">&#34;en-us&#34;</span>
+        contentDir       = <span style="color:#4070a0">&#34;content/en&#34;</span>
+        weight           = <span style="color:#40a070">0</span>
+        title            = <span style="color:#4070a0">&#34;Introduction&#34;</span>
+        [languages.en.params]
+            description  = <span style="color:#4070a0">&#34;Website Description&#34;</span>   <span style="color:#60a0b0;font-style:italic"># Max 160 characters show in search results</span>
+            <span style="color:#60a0b0;font-style:italic"># footerText   = &#34;&#34;                      # Text to override default footer text (markdown allowed)</span>
+
+
+
+</code></pre></div></details>
+<p>Aromatic aroma con panna, crema so coffee robust coffee barista, café au lait trifecta that strong blue mountain cortado aftertaste. Aroma extraction french press, skinny sweet, blue mountain cup roast barista, beans, extra cappuccino mug crema strong. Americano caffeine white, con panna saucer sit, con panna eu, carajillo aftertaste kopi-luwak, body aftertaste cup single origin café au lait saucer. Macchiato java sweet arabica, turkish cup, eu flavour mug extraction white cortado saucer est white brewed instant, rich, barista breve cappuccino barista organic. Barista, beans extraction, barista mocha, roast steamed siphon cup sweet cortado, cinnamon froth milk ristretto cortado galão. Crema, milk extra brewed, lungo dripper, espresso flavour qui, variety, grinder caramelization sit, strong turkish espresso body, filter barista caramelization half and half strong. To go viennese cream to go, flavour, so mocha as, carajillo iced et a siphon froth. Aged, eu, cup, brewed aroma kopi-luwak, coffee, id viennese french press brewed grounds acerbic froth. Decaffeinated acerbic, spoon beans seasonal, french press café au lait mazagran roast chicory, pumpkin spice galão as fair trade, dark irish cup ristretto half and half whipped shop. Latte instant black extra aroma, instant, extra robusta variety skinny shop aged cup ristretto foam cortado. Bar galão skinny saucer est affogato sugar caffeine chicory sugar coffee, seasonal barista french press acerbic in chicory robust.</p>
 <p><img src="workday.jpg" alt="Sample image"></p>
 <p>At, whipped extraction, wings, dark black, breve, single origin, est as irish, caffeine milk half and half, whipped, arabica filter dark a trifecta aftertaste. Aroma galão, at mocha breve cortado lungo beans aromatic robust white dripper whipped and, crema siphon redeye strong robust. Flavour, rich redeye milk wings flavour body aftertaste, coffee, breve instant, ut variety arabica rich mocha trifecta, instant saucer filter id percolator dripper. Chicory, percolator acerbic, dripper a, est milk, frappuccino caffeine viennese, milk and decaffeinated espresso french press mocha. Single origin french press caffeine qui con panna americano, decaffeinated, mocha iced that iced crema robust decaffeinated. Aged macchiato, redeye aftertaste cortado roast, chicory arabica at, eu ut grinder, single shot steamed barista, americano, shop cultivar pumpkin spice that viennese. Ut grounds beans sit grinder seasonal crema con panna, single shot, ristretto, decaffeinated body, est wings plunger pot cappuccino coffee foam white extraction robust. So, that extraction, organic plunger pot aroma rich aftertaste extraction, in rich sit single shot aromatic irish crema strong. Cream java, turkish cappuccino, brewed steamed fair trade caffeine aged so and, foam milk iced black strong. Cup dripper single shot saucer black aromatic, caramelization espresso, so est macchiato half and half caffeine, caramelization extraction java trifecta dark. In, espresso, as café au lait instant, french press, acerbic, single origin, frappuccino seasonal ristretto spoon, mocha coffee, aftertaste spoon turkish est froth single origin eu redeye.</p>
 <p>Block of code:</p>
