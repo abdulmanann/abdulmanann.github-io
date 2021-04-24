@@ -5,38 +5,55 @@ tags: ["code"]
 series: ["quickstart"]
 ---
 
-Here are some helpful tips for setting up this theme.
+This project is assigned as a course assignment for Computer Organization and Assembly. I made 64-bit operating system using the following given resources/tutorials.  
+* [Write Your Own 64-bit Operating System Kernel #1 - Boot code and multiboot header](https://www.youtube.com/watch?v=FkrpUaGThTQ)
+* [Write Your Own 64-bit Operating System Kernel #2 - Stack, long mode and printing using C code](https://www.youtube.com/watch?v=wz9CZBeXR6U)  
 
-## Configuration
+**Github Repo of the code: [https://github.com/abdulmanann/operating-system-assignment](https://github.com/abdulmanann/operating-system-assignment)**  
 
-Most of what you'll want to configure is demonstrated in the exampleSite `config.toml`. This is [Hugo's configuration file](https://gohugo.io/getting-started/configuration/). You can copy the `config.toml` in the `exampleSite/` to your site root get started.
+### Software, Packages and Languages   
+The softwares, packages and languages used were
+* *Docker* - for accessing pre-built images used in the project
+* *Qemu* - to emulate hardware for running the operating system
+* *Grub* - bootloader package
+* *gcc-cross-x86_64* - a package to compile the code
+* *VS Code* - text editor to write code   
+* *C language* - to write functions for displaying message on screen.
+* *NASM* - to assemble the assembly code.
+  
+### Project Explaination
+<summary>The operating system is made for x86 architecure and the bootloader is multiboot complaint; that is it can run with other operating system. It is written in assembly and C language. I first created 32-bit mode compatible operating system than using paging implemented the virtual memory and thus switched the mode to 64-bit mode.</summary>
 
-<details><summary>Here are all the options included in the configuration file for this example site!</summary>
+#### Setting up the environment
+The docker file contains all the required packages to build our image for the environment required for the operating system. It is built upon another pre-built image. Using the environment, we will be in virtual linux machine where we will have access to all the required tools.
 
-```toml
-{{% md %}}
-{{< readfile file="config.toml" >}}
-{{% /md %}}
-```
+#### Integrating bootloader and creating entry point
+The implementation folder includes the assembly code. We have boot folder that integrates bootloader to the operating system. Inside, the folder you will find asm files. The header.asm file contains magic data; its a number that the bootloader will look for so that it can understand that we have an operating system. The bootloader is the first thing that starts on a computer, its core responsibilty is to locate an operating system. This project follows multiboot 2 specifications. It is supported by most bootloaders. The Multiboot 2 specification supports boot modules, which are pieces of data loaded into memory when the bootloader boots your kernel. The header file also contains information about the architecure on which our operating system would run.  
+The main.asm file is the entry point into the operating system. In part 01, to print something on screen, we write directly to video memory. The cpu will show this stored information on our screen. Video memory is memory on a video card and in some cases on the motherboard, that's accessible by the video and computer processor. Using mov instruction we moved the data to be printed to the address of video memory. 
 
-</details>
+#### Creating stack, switching to long mode and 64-bit mode
+In part 02, a stack is setup to allow us to link to C code. Stack is region in memory that stores functions' call data that includes local variables and address that the function would return to. The stack is coded to be created in main.asm file. 16 KB of memory is reserved for the stack.  
+Before linking to C code, the kernel is to be switched into 64-bit mode. For this, the cpu has to be switched to long mode. Few functions are written in main.asm file to check if the multiboot 2 bootloader has loaded it successfully, and also to check cpu id which is a cpu instruction that provides various cpu information. Using cpu id, we check if the computer supports long mode. Long mode is the mode where a 64-bit operating system can access 64-bit instructions and registers. As a requirement for long mode, we need to implement virtual memory through a process called paging.  
+| ![virtual memory](virtualmemory.PNG) | 
+|:--:| 
+| *Virtual Memory and Paging* |
+
+
+The data is stored in different physical addresses. However, rather than working with physical addresses in ram, we work with virtual addresses which are maped to the physical addresses. This provides a useful layer of indirection as it benefits in reduced memory fragmentation, memory swapping and copy-on write data. Paging allows us to map virtual address to physical addresses. This is done by creating page tables where we define all the mappings. After enabling the long mode, we create global descriptor table to enter 64-bit mode. It does not serve much purpose as we have used paging but it a requirement for 64-bit mode. The Global Descriptor Table is a table in memory that defines the processor's memory segments.
+The main64.asm has code written in 64-bit instruction set and it links the system with the C code. The main64.asm calls a kernel_main function which is written in C language.  
+
+#### Writing C code 
+In C code, a custom print function is written. Main.c has a function called kernel_main. It is the function where we use our custom print functions to write anything. The requirement of the assignment was to print the logo of NUST using ascii characters. This is the file where the logo is printed. Print.h is the header file where we define the interface for our print functions. The print.c has definition of all the print functions. It refers the video memory for printing the string. The number of columns and rows are fixed as the video memory can only show 80*25 characters. 
+
+
+#### Setting up linker and grub configuration
+In the targets/x86_64 directory, we have files required to build the operating system for x86 architecture. Here we have linker file that describe how to link our operating system together. In linker file, the entry point and all of the individual sections are defined. In ISO folder, we have grub configuration file and final ISO file. The grub will create an ISO file out of our operating system kernel binary. ISO is a common format for holding operating system. 
+In the makefile, we have commands to build our operating system. Make is tool to organize the build commands and it makes sure that the only files with changes be rebuilt.  
 
 
 
-Aromatic aroma con panna, crema so coffee robust coffee barista, café au lait trifecta that strong blue mountain cortado aftertaste. Aroma extraction french press, skinny sweet, blue mountain cup roast barista, beans, extra cappuccino mug crema strong. Americano caffeine white, con panna saucer sit, con panna eu, carajillo aftertaste kopi-luwak, body aftertaste cup single origin café au lait saucer. Macchiato java sweet arabica, turkish cup, eu flavour mug extraction white cortado saucer est white brewed instant, rich, barista breve cappuccino barista organic. Barista, beans extraction, barista mocha, roast steamed siphon cup sweet cortado, cinnamon froth milk ristretto cortado galão. Crema, milk extra brewed, lungo dripper, espresso flavour qui, variety, grinder caramelization sit, strong turkish espresso body, filter barista caramelization half and half strong. To go viennese cream to go, flavour, so mocha as, carajillo iced et a siphon froth. Aged, eu, cup, brewed aroma kopi-luwak, coffee, id viennese french press brewed grounds acerbic froth. Decaffeinated acerbic, spoon beans seasonal, french press café au lait mazagran roast chicory, pumpkin spice galão as fair trade, dark irish cup ristretto half and half whipped shop. Latte instant black extra aroma, instant, extra robusta variety skinny shop aged cup ristretto foam cortado. Bar galão skinny saucer est affogato sugar caffeine chicory sugar coffee, seasonal barista french press acerbic in chicory robust.
 
-![Sample image](workday.jpg)
+| ![output](output.PNG) | 
+|:--:| 
+| *Output of printed logo* |
 
-At, whipped extraction, wings, dark black, breve, single origin, est as irish, caffeine milk half and half, whipped, arabica filter dark a trifecta aftertaste. Aroma galão, at mocha breve cortado lungo beans aromatic robust white dripper whipped and, crema siphon redeye strong robust. Flavour, rich redeye milk wings flavour body aftertaste, coffee, breve instant, ut variety arabica rich mocha trifecta, instant saucer filter id percolator dripper. Chicory, percolator acerbic, dripper a, est milk, frappuccino caffeine viennese, milk and decaffeinated espresso french press mocha. Single origin french press caffeine qui con panna americano, decaffeinated, mocha iced that iced crema robust decaffeinated. Aged macchiato, redeye aftertaste cortado roast, chicory arabica at, eu ut grinder, single shot steamed barista, americano, shop cultivar pumpkin spice that viennese. Ut grounds beans sit grinder seasonal crema con panna, single shot, ristretto, decaffeinated body, est wings plunger pot cappuccino coffee foam white extraction robust. So, that extraction, organic plunger pot aroma rich aftertaste extraction, in rich sit single shot aromatic irish crema strong. Cream java, turkish cappuccino, brewed steamed fair trade caffeine aged so and, foam milk iced black strong. Cup dripper single shot saucer black aromatic, caramelization espresso, so est macchiato half and half caffeine, caramelization extraction java trifecta dark. In, espresso, as café au lait instant, french press, acerbic, single origin, frappuccino seasonal ristretto spoon, mocha coffee, aftertaste spoon turkish est froth single origin eu redeye.
-
-Block of code:
-
-```JavaScript
-  const thisIsATest = () => {
-    console.log("This is funny")
-  }
-```
-
-Barista at, whipped, brewed americano ut, black americano spoon crema, black carajillo, con panna, qui galão crema aged arabica. Cup half and half white, sugar, viennese, mocha to go single shot americano crema single origin sweet strong, pumpkin spice, flavour, rich steamed shop grinder steamed latte extra to go brewed. Frappuccino, variety a flavour rich, bar caffeine carajillo, caffeine, half and half brewed half and half that con panna single origin redeye. Roast percolator, beans kopi-luwak aftertaste ut, cup java, sweet, single origin affogato, eu espresso barista cortado trifecta ristretto to go aged cortado caramelization sweet. So variety wings sit roast acerbic a saucer, cream galão foam seasonal, instant, cinnamon beans macchiato mug steamed caffeine cappuccino. To go, frappuccino, body dripper aftertaste brewed spoon ristretto redeye, black dark, bar crema whipped wings macchiato, flavour, ut rich mocha variety filter aromatic. Ut instant single shot shop turkish and, grounds, latte half and half aged breve mug percolator shop. Macchiato, at cup single origin crema affogato, mug cup, eu et ristretto espresso, viennese froth beans variety to go. Coffee caffeine spoon, macchiato strong dripper crema, macchiato espresso blue mountain, chicory con panna white bar caffeine skinny trifecta con panna. Robust, mazagran latte to go, carajillo cinnamon at and trifecta, cream body variety instant id cream so extra. Ut as iced wings saucer caramelization, affogato, coffee, froth so, brewed acerbic iced shop in sweet brewed.
-
-Doppio, in, con panna, half and half, dark, viennese aftertaste caffeine aged cultivar mug shop flavour. Spoon to go, doppio caffeine, a latte carajillo whipped, viennese grinder carajillo whipped dark grinder espresso coffee, espresso, variety café au lait aged half and half grounds. Mazagran as, kopi-luwak viennese, dark, sit aged id at, milk, to go cup sweet, shop coffee, spoon mazagran filter, doppio at extra cup milk. Chicory id roast chicory aromatic strong, white sweet viennese, carajillo java strong a to go aftertaste, frappuccino at cinnamon dripper pumpkin spice arabica. Aged, brewed percolator, id, macchiato aroma, black bar aromatic ristretto lungo as mug grinder as mocha. Mug, medium et roast doppio, spoon so single origin french press skinny, caffeine blue mountain variety, mocha, percolator grinder café au lait kopi-luwak arabica. Caffeine, seasonal, french press steamed rich single origin cream galão brewed cinnamon, doppio java, chicory aftertaste ristretto, plunger pot aromatic, ut, plunger pot milk est whipped grinder coffee. Sweet macchiato cappuccino cup, decaffeinated macchiato cream, milk extra, ut, galão froth half and half sweet qui, siphon, et aged, skinny, siphon milk grounds strong to go. Chicory medium, ut viennese instant fair trade steamed medium café au lait, as fair trade, barista single origin, body acerbic decaffeinated lungo café au lait bar trifecta americano mazagran. Strong cortado caffeine wings cappuccino foam, saucer est cream white aftertaste body french press. Beans affogato, ristretto a plunger pot bar macchiato, froth filter seasonal doppio, siphon sit caffeine cortado redeye single shot.

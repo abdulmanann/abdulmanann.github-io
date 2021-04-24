@@ -24,6 +24,10 @@ Writing My Own 64 Bit Operating System - Introduction
 
 
 
+<meta property="og:image" content="https://abdulmanann.github.io/project/operation-system/output.PNG"/>
+
+<meta property="og:image" content="https://abdulmanann.github.io/project/operation-system/virtualmemory.PNG"/>
+
 <meta property="og:image" content="https://abdulmanann.github.io/project/operation-system/workday.jpg"/>
 
 
@@ -107,129 +111,71 @@ Writing My Own 64 Bit Operating System - Introduction
 
                 
     <div class="container markdown top-pad">
-        <p>Here are some helpful tips for setting up this theme.</p>
+        <p>This project is assigned as a course assignment for Computer Organization and Assembly. I made 64-bit operating system using the following given resources/tutorials.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=FkrpUaGThTQ">Write Your Own 64-bit Operating System Kernel #1 - Boot code and multiboot header</a></li>
+<li><a href="https://www.youtube.com/watch?v=wz9CZBeXR6U">Write Your Own 64-bit Operating System Kernel #2 - Stack, long mode and printing using C code</a></li>
+</ul>
+<p><strong>Github Repo of the code: <a href="https://github.com/abdulmanann/operating-system-assignment">https://github.com/abdulmanann/operating-system-assignment</a></strong></p>
 
-<h2 id="configuration" class="anchor-link"><a href="#configuration">Configuration</a></h2>
-<p>Most of what you&rsquo;ll want to configure is demonstrated in the exampleSite <code>config.toml</code>. This is <a href="https://gohugo.io/getting-started/configuration/">Hugo&rsquo;s configuration file</a>. You can copy the <code>config.toml</code> in the <code>exampleSite/</code> to your site root get started.</p>
-<details><summary>Here are all the options included in the configuration file for this example site!</summary>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">
-baseURL                          = <span style="color:#4070a0">&#34;https://abdulmanann.github.io/&#34;</span>   <span style="color:#60a0b0;font-style:italic"># Your domain name. Must end with &#34;/&#34;</span>
-theme                            = <span style="color:#4070a0">&#34;introduction&#34;</span>
-title                            = <span style="color:#4070a0">&#34;Abdul Manan&#34;</span>
-publishdir                       = <span style="color:#4070a0">&#34;docs&#34;</span>
-DefaultContentLanguage           = <span style="color:#4070a0">&#34;en&#34;</span>                    <span style="color:#60a0b0;font-style:italic"># Default language for multilingual sites</span>
-<span style="color:#60a0b0;font-style:italic"># disqusshortname                 = &#34;&#34;                     # https://gohugo.io/content-management/comments</span>
-<span style="color:#60a0b0;font-style:italic"># googleAnalytics                 = &#34;&#34;                     # https://gohugo.io/templates/internal/#google-analytics</span>
+<h3 id="software-packages-and-languages" class="anchor-link"><a href="#software-packages-and-languages">Software, Packages and Languages</a></h3>
+<p>The softwares, packages and languages used were</p>
+<ul>
+<li><em>Docker</em> - for accessing pre-built images used in the project</li>
+<li><em>Qemu</em> - to emulate hardware for running the operating system</li>
+<li><em>Grub</em> - bootloader package</li>
+<li><em>gcc-cross-x86_64</em> - a package to compile the code</li>
+<li><em>VS Code</em> - text editor to write code</li>
+<li><em>C language</em> - to write functions for displaying message on screen.</li>
+<li><em>NASM</em> - to assemble the assembly code.</li>
+</ul>
 
-[params]
-    themeStyle                   = <span style="color:#4070a0">&#34;auto&#34;</span>                  <span style="color:#60a0b0;font-style:italic"># Choose &#34;light&#34; or &#34;dark&#34; or &#34;auto&#34;</span>
-    favicon                      = <span style="color:#4070a0">&#34;/img/fav.ico&#34;</span>          <span style="color:#60a0b0;font-style:italic"># Path to favicon file</span>
-    showRSSButton                = <span style="color:#007020;font-weight:bold">false</span>                   <span style="color:#60a0b0;font-style:italic"># Show rss button in navigation</span>
-    fadeIn                       = <span style="color:#007020;font-weight:bold">true</span>                    <span style="color:#60a0b0;font-style:italic"># Turn on/off the fade-in effect</span>
-    fadeInIndex                  = <span style="color:#007020;font-weight:bold">false</span>                   <span style="color:#60a0b0;font-style:italic"># Turn on/off the fade-in effect on the index page even if fade-in was otherwise turned off</span>
-    dateFormat                   = <span style="color:#4070a0">&#34;Jan 2, 2006&#34;</span>
-    email                        = <span style="color:#4070a0">&#34;amanan.bscs19seecs@seecs.edu.pk&#34;</span>   <span style="color:#60a0b0;font-style:italic"># E-mail address for contact section</span>
-    <span style="color:#60a0b0;font-style:italic"># customCSS                  = [&#34;foo.css&#34;]             # Include custom css files placed under assets/</span>
-    <span style="color:#60a0b0;font-style:italic"># customJS                   = [&#34;foo.js&#34;]              # Include custom JavaScript files placed under assets/</span>
-    <span style="color:#60a0b0;font-style:italic"># plausible                  = true                    # Use Plausible analytics (requires an account at Plausible.io)</span>
+<h3 id="project-explaination" class="anchor-link"><a href="#project-explaination">Project Explaination</a></h3>
+<summary>The operating system is made for x86 architecure and the bootloader is multiboot complaint; that is it can run with other operating system. It is written in assembly and C language. I first created 32-bit mode compatible operating system than using paging implemented the virtual memory and thus switched the mode to 64-bit mode.</summary>
 
-    <span style="color:#60a0b0;font-style:italic"># Configure the home page</span>
-    [params.home]
-        introHeight              = <span style="color:#4070a0">&#34;fullheight&#34;</span>            <span style="color:#60a0b0;font-style:italic"># Input either &#34;medium&#34; or &#34;large&#34; or &#34;fullheight&#34;</span>
-        showLatest               = <span style="color:#007020;font-weight:bold">true</span>                   <span style="color:#60a0b0;font-style:italic"># Show latest blog post summary</span>
-        showAllPosts             = <span style="color:#007020;font-weight:bold">false</span>                   <span style="color:#60a0b0;font-style:italic"># Set true to list all posts on home page, or set false to link to separate blog list page</span>
-        allPostsArchiveFormat    = <span style="color:#007020;font-weight:bold">true</span>                    <span style="color:#60a0b0;font-style:italic"># show all posts in an archive format</span>
-        localTime                = <span style="color:#007020;font-weight:bold">true</span>                    <span style="color:#60a0b0;font-style:italic"># Show your current local time in contact section</span>
-        timeZone                 = <span style="color:#4070a0">&#34;Asia/Karachi&#34;</span>       <span style="color:#60a0b0;font-style:italic"># Your timezone as in the TZ* column of this list: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
-        timeFormat               = <span style="color:#4070a0">&#34;en-US&#34;</span>                 <span style="color:#60a0b0;font-style:italic"># Language specific format to use</span>
-    
-    <span style="color:#60a0b0;font-style:italic"># Share buttons on blog post pages</span>
-    [params.share]
-        twitter                  = <span style="color:#007020;font-weight:bold">true</span>
-        facebook                 = <span style="color:#007020;font-weight:bold">true</span>
-        pinterest                = <span style="color:#007020;font-weight:bold">true</span>
+<h4 id="setting-up-the-environment" class="anchor-link"><a href="#setting-up-the-environment">Setting up the environment</a></h4>
+<p>The docker file contains all the required packages to build our image for the environment required for the operating system. It is built upon another pre-built image. Using the environment, we will be in virtual linux machine where we will have access to all the required tools.</p>
 
-    <span style="color:#60a0b0;font-style:italic"># Social icons appear in introduction and contact section. Add as many more as you like.</span>
-    <span style="color:#60a0b0;font-style:italic"># Icon pack &#34;fab&#34; includes social network icons, see: https://fontawesome.com/icons?d=gallery&amp;s=brands&amp;m=free</span>
-    <span style="color:#60a0b0;font-style:italic"># Icon pack &#34;fas&#34; includes solid style icons, see: https://fontawesome.com/icons?d=gallery&amp;s=solid&amp;m=free</span>
-    [[params.social]]
-        url   = <span style="color:#4070a0">&#34;https://twitter.com/&#34;</span>
-        icon  = <span style="color:#4070a0">&#34;twitter&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
-        icon_pack = <span style="color:#4070a0">&#34;fab&#34;</span>
-    [[params.social]]
-        url   = <span style="color:#4070a0">&#34;https://facebook.com/&#34;</span>
-        icon  = <span style="color:#4070a0">&#34;facebook-f&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
-        icon_pack = <span style="color:#4070a0">&#34;fab&#34;</span>
-    [[params.social]]
-        url   = <span style="color:#4070a0">&#34;https://linkedin.com/&#34;</span>
-        icon  = <span style="color:#4070a0">&#34;linkedin-in&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
-        icon_pack = <span style="color:#4070a0">&#34;fab&#34;</span>
-    [[params.social]]
-        url = <span style="color:#4070a0">&#34;mailto:youremail@email.com&#34;</span>  <span style="color:#60a0b0;font-style:italic"># For a direct email link, use &#34;mailto:test@example.org&#34;.</span>
-        icon = <span style="color:#4070a0">&#34;paper-plane&#34;</span> <span style="color:#60a0b0;font-style:italic"># icon name without the &#39;fa-&#39;</span>
-        icon_pack = <span style="color:#4070a0">&#34;fas&#34;</span>
+<h4 id="integrating-bootloader-and-creating-entry-point" class="anchor-link"><a href="#integrating-bootloader-and-creating-entry-point">Integrating bootloader and creating entry point</a></h4>
+<p>The implementation folder includes the assembly code. We have boot folder that integrates bootloader to the operating system. Inside, the folder you will find asm files. The header.asm file contains magic data; its a number that the bootloader will look for so that it can understand that we have an operating system. The bootloader is the first thing that starts on a computer, its core responsibilty is to locate an operating system. This project follows multiboot 2 specifications. It is supported by most bootloaders. The Multiboot 2 specification supports boot modules, which are pieces of data loaded into memory when the bootloader boots your kernel. The header file also contains information about the architecure on which our operating system would run.<br>
+The main.asm file is the entry point into the operating system. In part 01, to print something on screen, we write directly to video memory. The cpu will show this stored information on our screen. Video memory is memory on a video card and in some cases on the motherboard, that&rsquo;s accessible by the video and computer processor. Using mov instruction we moved the data to be printed to the address of video memory.</p>
 
+<h4 id="creating-stack-switching-to-long-mode-and-64-bit-mode" class="anchor-link"><a href="#creating-stack-switching-to-long-mode-and-64-bit-mode">Creating stack, switching to long mode and 64-bit mode</a></h4>
+<p>In part 02, a stack is setup to allow us to link to C code. Stack is region in memory that stores functions' call data that includes local variables and address that the function would return to. The stack is coded to be created in main.asm file. 16 KB of memory is reserved for the stack.<br>
+Before linking to C code, the kernel is to be switched into 64-bit mode. For this, the cpu has to be switched to long mode. Few functions are written in main.asm file to check if the multiboot 2 bootloader has loaded it successfully, and also to check cpu id which is a cpu instruction that provides various cpu information. Using cpu id, we check if the computer supports long mode. Long mode is the mode where a 64-bit operating system can access 64-bit instructions and registers. As a requirement for long mode, we need to implement virtual memory through a process called paging.  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="virtualmemory.PNG" alt="virtual memory"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><em>Virtual Memory and Paging</em></td>
+</tr>
+</tbody>
+</table>
+<p>The data is stored in different physical addresses. However, rather than working with physical addresses in ram, we work with virtual addresses which are maped to the physical addresses. This provides a useful layer of indirection as it benefits in reduced memory fragmentation, memory swapping and copy-on write data. Paging allows us to map virtual address to physical addresses. This is done by creating page tables where we define all the mappings. After enabling the long mode, we create global descriptor table to enter 64-bit mode. It does not serve much purpose as we have used paging but it a requirement for 64-bit mode. The Global Descriptor Table is a table in memory that defines the processor&rsquo;s memory segments.
+The main64.asm has code written in 64-bit instruction set and it links the system with the C code. The main64.asm calls a kernel_main function which is written in C language.</p>
 
-<span style="color:#60a0b0;font-style:italic"># If you don&#39;t want to use the default menu, you can define one by yourself</span>
- [[menu.main]]
-     name    = <span style="color:#4070a0">&#34;Home&#34;</span>
-     url     = <span style="color:#4070a0">&#34;/&#34;</span>
-     weight  = <span style="color:#40a070">100</span>
- [[menu.main]]
-     name    = <span style="color:#4070a0">&#34;Projects&#34;</span>
-     url     = <span style="color:#4070a0">&#34;/project/&#34;</span>
-     weight  = <span style="color:#40a070">200</span>
-[[menu.main]]
-     name    = <span style="color:#4070a0">&#34;Resume&#34;</span>
-     url     = <span style="color:#4070a0">&#34;/resume/&#34;</span>
-     weight  = <span style="color:#40a070">300</span>
+<h4 id="writing-c-code" class="anchor-link"><a href="#writing-c-code">Writing C code</a></h4>
+<p>In C code, a custom print function is written. Main.c has a function called kernel_main. It is the function where we use our custom print functions to write anything. The requirement of the assignment was to print the logo of NUST using ascii characters. This is the file where the logo is printed. Print.h is the header file where we define the interface for our print functions. The print.c has definition of all the print functions. It refers the video memory for printing the string. The number of columns and rows are fixed as the video memory can only show 80*25 characters.</p>
 
-<span style="color:#60a0b0;font-style:italic"># We only use tag as a taxonomies</span>
-<span style="color:#60a0b0;font-style:italic"># You can add more by yourself</span>
-[taxonomies]
-  tag = <span style="color:#4070a0">&#34;tags&#34;</span>
-  series = <span style="color:#4070a0">&#34;series&#34;</span>
-
-[markup]
-  defaultMarkdownHandler = <span style="color:#4070a0">&#34;goldmark&#34;</span>
-  [markup.goldmark]
-  [markup.goldmark.renderer]
-    unsafe = <span style="color:#007020;font-weight:bold">true</span>
-  [markup.highlight]
-    codeFences = <span style="color:#007020;font-weight:bold">true</span>
-    guessSyntax = <span style="color:#007020;font-weight:bold">false</span>
-    hl_Lines = <span style="color:#4070a0">&#34;&#34;</span>
-    lineNoStart = <span style="color:#40a070">1</span>
-    lineNos = <span style="color:#007020;font-weight:bold">false</span>
-    lineNumbersInTable = <span style="color:#007020;font-weight:bold">true</span>
-    noClasses = <span style="color:#007020;font-weight:bold">true</span>
-    <span style="color:#60a0b0;font-style:italic"># For styles, see https://xyproto.github.io/splash/docs/longer/all.html</span>
-    style = <span style="color:#4070a0">&#34;friendly&#34;</span>
-    tabWidth = <span style="color:#40a070">4</span>
-
-[languages]
-    [languages.en]
-        languageName     = <span style="color:#4070a0">&#34;English&#34;</span>
-        languageCode     = <span style="color:#4070a0">&#34;en-us&#34;</span>
-        contentDir       = <span style="color:#4070a0">&#34;content/en&#34;</span>
-        weight           = <span style="color:#40a070">0</span>
-        title            = <span style="color:#4070a0">&#34;Introduction&#34;</span>
-        [languages.en.params]
-            description  = <span style="color:#4070a0">&#34;Website Description&#34;</span>   <span style="color:#60a0b0;font-style:italic"># Max 160 characters show in search results</span>
-            <span style="color:#60a0b0;font-style:italic"># footerText   = &#34;&#34;                      # Text to override default footer text (markdown allowed)</span>
-
-
-
-</code></pre></div></details>
-<p>Aromatic aroma con panna, crema so coffee robust coffee barista, café au lait trifecta that strong blue mountain cortado aftertaste. Aroma extraction french press, skinny sweet, blue mountain cup roast barista, beans, extra cappuccino mug crema strong. Americano caffeine white, con panna saucer sit, con panna eu, carajillo aftertaste kopi-luwak, body aftertaste cup single origin café au lait saucer. Macchiato java sweet arabica, turkish cup, eu flavour mug extraction white cortado saucer est white brewed instant, rich, barista breve cappuccino barista organic. Barista, beans extraction, barista mocha, roast steamed siphon cup sweet cortado, cinnamon froth milk ristretto cortado galão. Crema, milk extra brewed, lungo dripper, espresso flavour qui, variety, grinder caramelization sit, strong turkish espresso body, filter barista caramelization half and half strong. To go viennese cream to go, flavour, so mocha as, carajillo iced et a siphon froth. Aged, eu, cup, brewed aroma kopi-luwak, coffee, id viennese french press brewed grounds acerbic froth. Decaffeinated acerbic, spoon beans seasonal, french press café au lait mazagran roast chicory, pumpkin spice galão as fair trade, dark irish cup ristretto half and half whipped shop. Latte instant black extra aroma, instant, extra robusta variety skinny shop aged cup ristretto foam cortado. Bar galão skinny saucer est affogato sugar caffeine chicory sugar coffee, seasonal barista french press acerbic in chicory robust.</p>
-<p><img src="workday.jpg" alt="Sample image"></p>
-<p>At, whipped extraction, wings, dark black, breve, single origin, est as irish, caffeine milk half and half, whipped, arabica filter dark a trifecta aftertaste. Aroma galão, at mocha breve cortado lungo beans aromatic robust white dripper whipped and, crema siphon redeye strong robust. Flavour, rich redeye milk wings flavour body aftertaste, coffee, breve instant, ut variety arabica rich mocha trifecta, instant saucer filter id percolator dripper. Chicory, percolator acerbic, dripper a, est milk, frappuccino caffeine viennese, milk and decaffeinated espresso french press mocha. Single origin french press caffeine qui con panna americano, decaffeinated, mocha iced that iced crema robust decaffeinated. Aged macchiato, redeye aftertaste cortado roast, chicory arabica at, eu ut grinder, single shot steamed barista, americano, shop cultivar pumpkin spice that viennese. Ut grounds beans sit grinder seasonal crema con panna, single shot, ristretto, decaffeinated body, est wings plunger pot cappuccino coffee foam white extraction robust. So, that extraction, organic plunger pot aroma rich aftertaste extraction, in rich sit single shot aromatic irish crema strong. Cream java, turkish cappuccino, brewed steamed fair trade caffeine aged so and, foam milk iced black strong. Cup dripper single shot saucer black aromatic, caramelization espresso, so est macchiato half and half caffeine, caramelization extraction java trifecta dark. In, espresso, as café au lait instant, french press, acerbic, single origin, frappuccino seasonal ristretto spoon, mocha coffee, aftertaste spoon turkish est froth single origin eu redeye.</p>
-<p>Block of code:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">  <span style="color:#007020;font-weight:bold">const</span> thisIsATest <span style="color:#666">=</span> () =&gt; {
-    console.log(<span style="color:#4070a0">&#34;This is funny&#34;</span>)
-  }
-</code></pre></div><p>Barista at, whipped, brewed americano ut, black americano spoon crema, black carajillo, con panna, qui galão crema aged arabica. Cup half and half white, sugar, viennese, mocha to go single shot americano crema single origin sweet strong, pumpkin spice, flavour, rich steamed shop grinder steamed latte extra to go brewed. Frappuccino, variety a flavour rich, bar caffeine carajillo, caffeine, half and half brewed half and half that con panna single origin redeye. Roast percolator, beans kopi-luwak aftertaste ut, cup java, sweet, single origin affogato, eu espresso barista cortado trifecta ristretto to go aged cortado caramelization sweet. So variety wings sit roast acerbic a saucer, cream galão foam seasonal, instant, cinnamon beans macchiato mug steamed caffeine cappuccino. To go, frappuccino, body dripper aftertaste brewed spoon ristretto redeye, black dark, bar crema whipped wings macchiato, flavour, ut rich mocha variety filter aromatic. Ut instant single shot shop turkish and, grounds, latte half and half aged breve mug percolator shop. Macchiato, at cup single origin crema affogato, mug cup, eu et ristretto espresso, viennese froth beans variety to go. Coffee caffeine spoon, macchiato strong dripper crema, macchiato espresso blue mountain, chicory con panna white bar caffeine skinny trifecta con panna. Robust, mazagran latte to go, carajillo cinnamon at and trifecta, cream body variety instant id cream so extra. Ut as iced wings saucer caramelization, affogato, coffee, froth so, brewed acerbic iced shop in sweet brewed.</p>
-<p>Doppio, in, con panna, half and half, dark, viennese aftertaste caffeine aged cultivar mug shop flavour. Spoon to go, doppio caffeine, a latte carajillo whipped, viennese grinder carajillo whipped dark grinder espresso coffee, espresso, variety café au lait aged half and half grounds. Mazagran as, kopi-luwak viennese, dark, sit aged id at, milk, to go cup sweet, shop coffee, spoon mazagran filter, doppio at extra cup milk. Chicory id roast chicory aromatic strong, white sweet viennese, carajillo java strong a to go aftertaste, frappuccino at cinnamon dripper pumpkin spice arabica. Aged, brewed percolator, id, macchiato aroma, black bar aromatic ristretto lungo as mug grinder as mocha. Mug, medium et roast doppio, spoon so single origin french press skinny, caffeine blue mountain variety, mocha, percolator grinder café au lait kopi-luwak arabica. Caffeine, seasonal, french press steamed rich single origin cream galão brewed cinnamon, doppio java, chicory aftertaste ristretto, plunger pot aromatic, ut, plunger pot milk est whipped grinder coffee. Sweet macchiato cappuccino cup, decaffeinated macchiato cream, milk extra, ut, galão froth half and half sweet qui, siphon, et aged, skinny, siphon milk grounds strong to go. Chicory medium, ut viennese instant fair trade steamed medium café au lait, as fair trade, barista single origin, body acerbic decaffeinated lungo café au lait bar trifecta americano mazagran. Strong cortado caffeine wings cappuccino foam, saucer est cream white aftertaste body french press. Beans affogato, ristretto a plunger pot bar macchiato, froth filter seasonal doppio, siphon sit caffeine cortado redeye single shot.</p>
+<h4 id="setting-up-linker-and-grub-configuration" class="anchor-link"><a href="#setting-up-linker-and-grub-configuration">Setting up linker and grub configuration</a></h4>
+<p>In the targets/x86_64 directory, we have files required to build the operating system for x86 architecture. Here we have linker file that describe how to link our operating system together. In linker file, the entry point and all of the individual sections are defined. In ISO folder, we have grub configuration file and final ISO file. The grub will create an ISO file out of our operating system kernel binary. ISO is a common format for holding operating system. 
+In the makefile, we have commands to build our operating system. Make is tool to organize the build commands and it makes sure that the only files with changes be rebuilt.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="output.PNG" alt="output"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><em>Output of printed logo</em></td>
+</tr>
+</tbody>
+</table>
 
     </div>
     

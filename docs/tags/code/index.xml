@@ -13,9 +13,9 @@
       <pubDate>Sat, 25 Jul 2020 02:04:06 -0500</pubDate>
       
       <guid>https://abdulmanann.github.io/project/operation-system/</guid>
-      <description>Here are some helpful tips for setting up this theme.
-ConfigurationMost of what you&amp;rsquo;ll want to configure is demonstrated in the exampleSite config.toml. This is Hugo&amp;rsquo;s configuration file. You can copy the config.toml in the exampleSite/ to your site root get started.
-Here are all the options included in the configuration file for this example site!baseURL = &amp;#34;https://abdulmanann.github.io/&amp;#34; # Your domain name. Must end with &amp;#34;/&amp;#34; theme = &amp;#34;introduction&amp;#34; title = &amp;#34;Abdul Manan&amp;#34; publishdir = &amp;#34;docs&amp;#34; DefaultContentLanguage = &amp;#34;en&amp;#34; # Default language for multilingual sites # disqusshortname = &amp;#34;&amp;#34; # https://gohugo.</description>
+      <description>This project is assigned as a course assignment for Computer Organization and Assembly. I made 64-bit operating system using the following given resources/tutorials.
+ Write Your Own 64-bit Operating System Kernel #1 - Boot code and multiboot header Write Your Own 64-bit Operating System Kernel #2 - Stack, long mode and printing using C code  Github Repo of the code: https://github.com/abdulmanann/operating-system-assignment
+Software, Packages and LanguagesThe softwares, packages and languages used were</description>
     </item>
     
     <item>
